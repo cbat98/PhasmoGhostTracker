@@ -4,6 +4,9 @@ let ghost_data;
 function setup() {
     evidence = loadEvidence();
     ghost_data = loadGhosts();
+    
+    createComboBoxes();
+    
     createTable();
 }
 
@@ -48,6 +51,54 @@ function loadGhosts() {
 
     console.log("Ghost data loaded!");
     return ghosts;
+}
+
+function createComboBoxes() {    
+    // Find body element and create div for combo boxes
+    body = document.getElementsByTagName("body")[0];
+    comboBoxes = document.createElement("div");
+    comboBoxes.id = "ComboBoxes";
+
+    // Create combo boxes
+    for (let i = 0; i < 3; i++) {
+        createComboBox(i, comboBoxes);
+    }
+
+    // Display combo box div
+    body.appendChild(comboBoxes);
+}
+
+// Creates combo box with evidence list under parent element
+function createComboBox(id, parent) {
+    // Find page body
+    let body = document.getElementsByTagName("body")[0];
+    // Create combo box
+    let cb = document.createElement("select");
+
+    // Run lambda function when combo box value is changed
+    cb.addEventListener("change", (event) => {
+        console.log(event);
+        updateComboBoxes();
+    });
+
+    // Create placeholder text item
+    let option = document.createElement("option");
+    option.text = "Evidence #" + (id + 1);
+    option.selected = "true";
+    option.disabled = "true";
+    
+    // Add placeholder to combo-box
+    cb.appendChild(option);
+
+    // Create entry for each evidence type
+    evidence.forEach((name) => {
+        option = document.createElement("option");
+        option.text = name;
+        cb.appendChild(option);
+    });
+
+    // Show combo-box on page
+    parent.appendChild(cb);
 }
 
 // Create table showing remaining ghost types
