@@ -1,12 +1,14 @@
 let evidence;
+let selected_evidence;
 let ghost_data;
 
 function setup() {
     evidence = loadEvidence();
+    selected_evidence = ["","",""];
     ghost_data = loadGhosts();
     
     createComboBoxes();
-    
+
     createTable();
 }
 
@@ -99,6 +101,18 @@ function createComboBox(id, parent) {
 
     // Show combo-box on page
     parent.appendChild(cb);
+}
+
+function updateComboBoxes() {
+    // Find all combo boxes on page
+    boxes = document.getElementsByTagName("select");
+
+    // Store value from each combo box
+    for (let i = 0; i < boxes.length; i++) {
+        if(!boxes[i].value.startsWith("Evidence")) {
+            selected_evidence[i] = boxes[i].value;
+        }      
+    }
 }
 
 // Create table showing remaining ghost types
