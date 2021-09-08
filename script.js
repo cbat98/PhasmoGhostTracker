@@ -113,6 +113,8 @@ function updateComboBoxes() {
             selected_evidence[i] = boxes[i].value;
         }      
     }
+    
+    console.log("Selected evidence: " + selected_evidence);
 }
 
 // Create table showing remaining ghost types
