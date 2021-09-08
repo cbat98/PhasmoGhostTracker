@@ -2,6 +2,7 @@ let evidence;
 let ghost_data;
 
 function setup() {
+    evidence = loadEvidence();
     ghost_data = loadGhosts();
     createTable();
 }
