@@ -8,8 +8,6 @@ function setup() {
     ghost_data = loadGhosts();
     
     createComboBoxes();
-
-    createTable();
 }
 
 function loadEvidence() {
@@ -115,6 +113,8 @@ function updateComboBoxes() {
     }
     
     console.log("Selected evidence: " + selected_evidence);
+
+    createTable();
 }
 
 // Create table showing remaining ghost types
