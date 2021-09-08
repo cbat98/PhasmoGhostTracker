@@ -154,6 +154,10 @@ function createTable() {
                     // skip adding it to the table
                     skip = true;
                 }
+                else {
+                    let loc = attr.evidence.indexOf(selected_evidence[i]);
+                    [attr.evidence[i], attr.evidence[loc]] = [attr.evidence[loc], attr.evidence[i]]
+                }
             }
         }
 
