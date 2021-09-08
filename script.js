@@ -3,11 +3,18 @@ let selected_evidence;
 let ghost_data;
 
 function setup() {
+    // Load necessary data
     evidence = loadEvidence();
-    selected_evidence = ["null","null","null"];
+    selected_evidence = ["null", "null", "null"];    
     ghost_data = loadGhosts();
-    
+
+    console.log("Data loaded!")
+
     createComboBoxes();
+
+    createClearButton();
+
+    console.log("Combo boxes created!")
 }
 
 function loadEvidence() {
@@ -94,13 +101,23 @@ function createComboBox(id, parent) {
     evidence.forEach((name) => {
         option = document.createElement("option");
         option.text = name;
-        cb.appendChild(option);
+
+        // Show option in combo box if not already selected
+        if(!selected_evidence.includes(name)) {
+            cb.appendChild(option);
+        }
+        // But show in combo box if it was selected in THIS box
+        if (selected_evidence[id] == name) {  
+            cb.appendChild(option);          
+            option.selected = "true";
+        }
     });
 
     // Show combo-box on page
     parent.appendChild(cb);
 }
 
+// Store selected combo box values and create new ones
 function updateComboBoxes() {
     // Find all combo boxes on page
     boxes = document.getElementsByTagName("select");
@@ -114,6 +131,17 @@ function updateComboBoxes() {
     
     console.log("Selected evidence: " + selected_evidence);
 
+    // Delete all combo boxes
+    let comboBoxes = document.getElementById("ComboBoxes");
+    comboBoxes.innerHTML = "";
+
+    console.log("Combo boxes cleared!");
+
+    // Create new combo boxes
+    for (let i = 0; i < 3; i++) {
+        createComboBox(i, comboBoxes);
+    }
+
     createTable();
 }
 
@@ -123,7 +151,7 @@ function createTable() {
     if (tables.length != 0) {
         tables[0].parentElement.removeChild(tables[0]);
     }
-
+    
     // Create table elements
     let body = document.getElementsByTagName("body")[0];
     let table = document.createElement("table");
@@ -180,7 +208,6 @@ function createTable() {
             // Add row to table
             tableBody.appendChild(tableRow);
         }
-
     });
 
     // Append table body to table element
@@ -188,6 +215,15 @@ function createTable() {
 
     // Show table on page
     body.appendChild(table);
+}
+
+function createClearButton() {
+    let body = document.getElementsByTagName("body")[0];
+    let clearBtn = document.createElement("button");
+    clearBtn.textContent = "Clear";
+    clearBtn.addEventListener("click", () => {location.reload()});
+
+    body.appendChild(clearBtn);
 }
 
 function addData(row, data) {
