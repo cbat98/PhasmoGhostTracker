@@ -1,8 +1,26 @@
+let evidence;
 let ghost_data;
 
 function setup() {
     ghost_data = loadGhosts();
     createTable();
+}
+
+function loadEvidence() {
+    // Data from https://phasmophobia.fandom.com/wiki/Evidence
+
+    let evidence = [
+        "DOTS Projector",
+        "EMF Level 5",
+        "Fingerprints",
+        "Freezing Temperatures",
+        "Ghost Orbs",
+        "Ghost Writing",
+        "Spirit Box",        
+    ];
+
+    console.log("Evidence loaded!");    
+    return evidence;
 }
 
 function loadGhosts() {    
