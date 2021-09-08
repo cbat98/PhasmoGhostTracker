@@ -119,6 +119,10 @@ function updateComboBoxes() {
 
 // Create table showing remaining ghost types
 function createTable() {
+    tables = document.getElementsByTagName("table");
+    if (tables.length != 0) {
+        tables[0].parentElement.removeChild(tables[0]);
+    }
     
     // Create table elements
     let body = document.getElementsByTagName("body")[0];
