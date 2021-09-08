@@ -4,7 +4,7 @@ let ghost_data;
 
 function setup() {
     evidence = loadEvidence();
-    selected_evidence = ["","",""];
+    selected_evidence = ["null","null","null"];
     ghost_data = loadGhosts();
     
     createComboBoxes();
@@ -123,7 +123,7 @@ function createTable() {
     if (tables.length != 0) {
         tables[0].parentElement.removeChild(tables[0]);
     }
-    
+
     // Create table elements
     let body = document.getElementsByTagName("body")[0];
     let table = document.createElement("table");
@@ -146,22 +146,36 @@ function createTable() {
     ghost_data.forEach((attr, name) => {
         let skip = false;
 
-        tableRow = document.createElement("tr");
-
-        // Ghost name
-        addData(tableRow, name);
-
-        // Ghost Evidence
-        for (let i = 0; i < attr.evidence.length; i++) {
-            addData(tableRow, attr.evidence[i]);
+        // Check if ghost matches evidence
+        for (let i = 0; i < 3; i++) {
+            if (selected_evidence[i] != "null") {
+                if(!attr.evidence.includes(selected_evidence[i])) {
+                    // If ghost doesn't match:
+                    // skip adding it to the table
+                    skip = true;
+                }
+            }
         }
 
-        // Ghost strength and weakness
-        addData(tableRow, attr.strength);
-        addData(tableRow, attr.weakness);
+        // Only add row if ghost matches evidence
+        if (!skip) {
+            tableRow = document.createElement("tr");
 
-        // Add row to table
-        tableBody.appendChild(tableRow);
+            // Ghost name
+            addData(tableRow, name);
+
+            // Ghost Evidence
+            for (let i = 0; i < attr.evidence.length; i++) {
+                addData(tableRow, attr.evidence[i]);
+            }
+
+            // Ghost strength and weakness
+            addData(tableRow, attr.strength);
+            addData(tableRow, attr.weakness);
+
+            // Add row to table
+            tableBody.appendChild(tableRow);
+        }
 
     });
 
