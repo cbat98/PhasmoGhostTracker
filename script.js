@@ -63,7 +63,7 @@ function loadGhosts() {
 function createComboBoxes() {    
     // Find body element and create div for combo boxes
     body = document.getElementsByTagName("body")[0];
-    comboBoxes = document.createElement("div");
+    comboBoxes = document.createElement("span");
     comboBoxes.id = "ComboBoxes";
 
     // Create combo boxes
@@ -164,8 +164,11 @@ function createTable() {
     addData(tableRow, "Evidence #1");
     addData(tableRow, "Evidence #2");
     addData(tableRow, "Evidence #3");
-    addData(tableRow, "Strength");
-    addData(tableRow, "Weakness");
+
+    if(screen.width > 500) {
+        addData(tableRow, "Strength");
+        addData(tableRow, "Weakness");
+    }
     
     tableHead.append(tableRow);
     table.appendChild(tableHead);
@@ -202,8 +205,10 @@ function createTable() {
             }
 
             // Ghost strength and weakness
-            addData(tableRow, attr.strength);
-            addData(tableRow, attr.weakness);
+            if (screen.width > 500) {
+                addData(tableRow, attr.strength);
+                addData(tableRow, attr.weakness);
+            }
 
             // Add row to table
             tableBody.appendChild(tableRow);

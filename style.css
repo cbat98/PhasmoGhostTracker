@@ -19,3 +19,15 @@ thead {
     color: white;
     white-space: nowrap;
 }
+
+@media screen and (max-width: 500px){
+    thead, td {
+        font-size: 12px;
+        padding: 5px;
+    }
+}
+
+span > select, button {
+    padding: 5px;
+    margin: 2px;
+}
