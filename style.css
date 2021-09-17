@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+table {
+    font-family: "Montserrat";
+}
+
+thead, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+thead {
+    background-color: rgb(246, 69, 69);
+    color: white;
+    white-space: nowrap;
+}
