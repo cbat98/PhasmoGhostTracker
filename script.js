@@ -48,7 +48,7 @@ function loadGhosts() {
     ghosts.set("Myling", new Ghost(["EMF Level 5", "Fingerprints", "Ghost Writing"], "A Myling is known to be quieter when hunting", "Mylings more frequently make paranormal sounds"));
     ghosts.set("Oni", new Ghost(["EMF Level 5", "Freezing Temperatures", "DOTS Projector"], "Onis are more active when people are nearby and have been seen moving objects at great speed", "Being more active makes Onis easier to find and identify"));
     ghosts.set("Phantom", new Ghost(["Spirit Box", "Fingerprints", "DOTS Projector"], "Looking at a Phantom will considerably drop your sanity", "Taking a photo of the Phantom will make it temporarily disappear"));
-    ghosts.set("Poltergeist", new Ghost(["Ghost Writing", "Spirit Box", "Fingerptints"], "A Poltergeist can throw huge amounts of objects at once", "A Poltergeist is almost ineffective in an empty room"));
+    ghosts.set("Poltergeist", new Ghost(["Ghost Writing", "Spirit Box", "Fingerprints"], "A Poltergeist can throw huge amounts of objects at once", "A Poltergeist is almost ineffective in an empty room"));
     ghosts.set("Revenant", new Ghost(["Ghost Orbs", "Ghost Writing", "Freezing Temperatures"], "A Revenant will travel at a significantly faster speed when hunting a victim", "Hiding from the Revenant will cause it to move very slowly"));
     ghosts.set("Shade", new Ghost(["EMF Level 5", "Ghost Writing", "Freezing Temperatures"], "Being shy means the Ghost will be harder to find", "The Ghost will not enter hunting mode if there is multiple people nearby"));
     ghosts.set("Spirit", new Ghost(["EMF Level 5", "Ghost Writing", "Spirit Box"], "Nothing lol", "Using Smudge Sticks on a spirit will stop it attacking for a long period of time"));
