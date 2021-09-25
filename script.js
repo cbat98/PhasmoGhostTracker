@@ -9,9 +9,11 @@ function setup() {
     ghost_data = loadGhosts();
 
     console.log("Data loaded!")
-
+    
     createComboBoxes();
-
+    
+    createShowAllButton();
+    
     createClearButton();
 
     console.log("Combo boxes created!")
@@ -146,7 +148,7 @@ function updateComboBoxes() {
 }
 
 // Create table showing remaining ghost types
-function createTable() {
+function createTable(showAll = false) {
     tables = document.getElementsByTagName("table");
     if (tables.length != 0) {
         tables[0].parentElement.removeChild(tables[0]);
@@ -193,7 +195,7 @@ function createTable() {
         }
 
         // Only add row if ghost matches evidence
-        if (!skip) {
+        if (!skip || showAll) {
             tableRow = document.createElement("tr");
 
             // Ghost name
@@ -220,6 +222,15 @@ function createTable() {
 
     // Show table on page
     body.appendChild(table);
+}
+
+function createShowAllButton() {
+    let body = document.getElementsByTagName("body")[0];
+    let clearBtn = document.createElement("button");
+    clearBtn.textContent = "Show All";
+    clearBtn.addEventListener("click", () => {createTable(true)});
+
+    body.appendChild(clearBtn);
 }
 
 function createClearButton() {
